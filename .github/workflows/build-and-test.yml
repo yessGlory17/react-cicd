@@ -35,6 +35,9 @@ jobs:
         container: cypress/included:8.4.0
         steps:
 
+        - name: Checkout git repo
+          uses: actions/checkout@v3
+
         - name: Run Cypress tests
           run: |
             docker run -v $PWD:/e2e -w /e2e cypress/included:8.4.0

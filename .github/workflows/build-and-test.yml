@@ -32,12 +32,8 @@ jobs:
     cypress:
         runs-on: ubuntu-22.04
         needs: install
-        
+        container: cypress/included:8.4.0
         steps:
-        - name: Set up Docker
-          run: |
-            sudo apt-get update
-            sudo apt-get install -y docker.io
 
         - name: Run Cypress tests
           run: |

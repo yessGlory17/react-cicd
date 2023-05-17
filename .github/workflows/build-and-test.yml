@@ -35,7 +35,9 @@ jobs:
         
         steps:
         - name: Set up Docker
-          uses: docker/setup-docker@v2
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y docker.io
 
         - name: Run Cypress tests
           run: |

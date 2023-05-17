@@ -39,7 +39,16 @@ jobs:
         steps:
 
           - name: Checkout git repo
-            uses: actions/checkout@v3
+            uses: actions/checkout@v2
+
+          - name: Install dependencies 📦
+            run: npm ci --legacy-peer-deps
+
+          - name: Show Cypress information ℹ️
+            run: npx cypress info
+
+          - name: Verify Cypress can run 🏃‍♂️
+            run: npx cypress verify
 
           - uses: cypress-io/github-action@v4
             with:

@@ -28,3 +28,15 @@ jobs:
 
         - name: "Run Tests"
           run: npm run test
+
+    cypress:
+        runs-on: ubuntu-22.04
+        needs: install
+        
+        steps:
+        - name: Set up Docker
+          uses: docker/setup-docker@v2
+
+        - name: Run Cypress tests
+          run: |
+            docker run -v $PWD:/e2e -w /e2e cypress/included:8.4.0

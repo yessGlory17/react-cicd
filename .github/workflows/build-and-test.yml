@@ -41,11 +41,11 @@ jobs:
           - name: Checkout git repo
             uses: actions/checkout@v2
 
-          - name: Install dependencies 📦
-            run: npm ci --legacy-peer-deps
-
           - name: Install packages
             run: npm install
+
+          - name: Install dependencies 📦
+            run: npm ci --legacy-peer-deps
 
           - name: Show Cypress information ℹ️
             run: npx cypress info

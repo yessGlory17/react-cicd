@@ -6,7 +6,7 @@ on:
             - master
 
 jobs:
-    build:
+    install:
         runs-on: ubuntu-22.04
 
         strategy:
@@ -26,8 +26,25 @@ jobs:
         - name: Install and build
           run: |
             npm install
-            npm run postinstall
-            npm run build
-
     
+    build:
+        runs-on: ubuntu-22.04
+
+        strategy:
+          matrix:
+            os: [ubuntu-22.04]
+
+        steps:
+        - name: Build Frontend
+          run: npm run build
+
+    test:
+        runs-on: ubuntu-22.04
+
+        strategy:
+          matrix:
+            os: [ubuntu-22.04]
         
+        steps:
+        - name: "Run Tests"
+          run: npm run test

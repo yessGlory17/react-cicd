@@ -32,23 +32,19 @@ jobs:
     cypress:
         runs-on: ubuntu-22.04
         needs: install
-        container:
-            image: cypress/included:8.4.0
-            volumes:
-              - /e2e:/e2e
+        container: cypress/browsers:node16.16.0-chrome107-ff107-edge
         steps:
-
-        - name: Checkout git repo
+        - name: Checkout
           uses: actions/checkout@v3
+        - name: Cypress run
+          uses: cypress-io/github-action@v5
+          with:
+            build: npm run build
+            start: npm start
+            browser: chrome
 
         # - name: Run Cypress tests
         #   run: |
         #     docker run -v $PWD:/e2e -w /e2e cypress/included:8.4.0
 
-        - name: Cypress run
-          uses: cypress-io/github-action@v5
-          with:
-            install: npm install
-            build: npm run build
-            start: npm start
-            browser: chrome
+       
